@@ -5,19 +5,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const canvas = ref(null);
 
+let handleScroll = () => {};
+
 onMounted(() => {
-  const ctx = canvas.value.getContext('2d');
+  const ctx = canvas.value.getContext('2d', { willReadFrequently: true });
   canvas.value.width = window.innerWidth;
   canvas.value.height = window.innerHeight;
 
   let particles = [];
   let mouse = {
-    x: null,
-    y: null,
+    x: undefined,
+    y: undefined,
     radius: 150
   }
   let animationState = 'text';
@@ -99,13 +101,25 @@ onMounted(() => {
 
   function initTextParticles() {
     particles = [];
+    ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
     ctx.fillStyle = 'white';
-    ctx.font = 'bold 5rem sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Dan Kaufman', canvas.value.width / 2, canvas.value.height / 2);
+
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      ctx.font = 'bold 4rem sans-serif';
+      const lineHeight = 64; // Approx 4rem
+      ctx.fillText('Dan', canvas.value.width / 2, canvas.value.height / 2 - lineHeight / 2);
+      ctx.fillText('Kaufman', canvas.value.width / 2, canvas.value.height / 2 + lineHeight / 2);
+    } else {
+      ctx.font = 'bold 5rem sans-serif';
+      ctx.fillText('Dan Kaufman', canvas.value.width / 2, canvas.value.height / 2);
+    }
+
     const textCoordinates = ctx.getImageData(0, 0, canvas.value.width, canvas.value.height);
-    const gap = 5;
+    const gap = isMobile ? 7 : 5;
     for (let y = 0; y < textCoordinates.height; y += gap) {
       for (let x = 0; x < textCoordinates.width; x += gap) {
         if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
@@ -157,33 +171,40 @@ onMounted(() => {
     requestAnimationFrame(animate);
   }
 
+  handleScroll = () => {
+    if (window.scrollY > 10 && animationState === 'text') {
+      animationState = 'network';
+      particles.forEach(p => {
+          p.vx = Math.random() * 8 - 4;
+          p.vy = Math.random() * 8 - 4;
+      });
+
+      const isMobile = window.innerWidth < 768;
+      const targetParticleCount = isMobile ? 60 : 100;
+
+      if (particles.length > targetParticleCount) {
+          const reductionTimer = setInterval(() => {
+              if (particles.length <= targetParticleCount) {
+                  clearInterval(reductionTimer);
+                  return;
+              }
+              const toRemoveCount = Math.max(1, Math.floor((particles.length - targetParticleCount) * 0.05));
+              for (let i = 0; i < toRemoveCount; i++) {
+                  if (particles.length > targetParticleCount) {
+                      const randomIndex = Math.floor(Math.random() * particles.length);
+                      particles.splice(randomIndex, 1);
+                  }
+              }
+          }, 16);
+      }
+      window.removeEventListener('scroll', handleScroll);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
   initTextParticles();
   animate();
-
-  setTimeout(() => {
-    animationState = 'network';
-    particles.forEach(p => {
-        p.vx = Math.random() * 8 - 4;
-        p.vy = Math.random() * 8 - 4;
-    });
-
-    const targetParticleCount = 100;
-    if (particles.length > targetParticleCount) {
-        const reductionTimer = setInterval(() => {
-            if (particles.length <= targetParticleCount) {
-                clearInterval(reductionTimer);
-                return;
-            }
-            const toRemoveCount = Math.max(1, Math.floor((particles.length - targetParticleCount) * 0.05));
-            for (let i = 0; i < toRemoveCount; i++) {
-                if (particles.length > targetParticleCount) {
-                    const randomIndex = Math.floor(Math.random() * particles.length);
-                    particles.splice(randomIndex, 1);
-                }
-            }
-        }, 16);
-    }
-  }, 2000);
 
   window.addEventListener('resize', () => {
     canvas.value.width = window.innerWidth;
@@ -195,6 +216,10 @@ onMounted(() => {
     }
   });
 
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
 });
 </script>
 

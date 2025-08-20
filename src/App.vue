@@ -6,6 +6,7 @@ import ProjectsSection from './components/ProjectsSection.vue';
 import ContactSection from './components/ContactSection.vue';
 import Footer from './components/Footer.vue';
 import Background from './components/Background.vue';
+import Toast from './components/Toast.vue';
 </script>
 
 <template>
@@ -16,5 +17,5 @@ import Background from './components/Background.vue';
     <ProjectsSection />
     <ContactSection />
     <Footer />
+    <Toast />
 </template>
-

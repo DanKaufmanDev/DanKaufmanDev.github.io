@@ -4,26 +4,26 @@
     <div class="projects-grid">
       <!-- Project 1 -->
       <div class="project-card">
-        <img src="https://placehold.co/400x250" alt="Project 1" class="project-image">
+        <img src="../assets/IconForgeScreenshot.webp" alt="Project 1" class="project-image">
         <div class="project-content">
-          <h3 class="project-title">Project One</h3>
+          <h3 class="project-title">IconForge</h3>
           <p class="project-description">A brief description of the first project. Highlighting the technologies used and the problems solved.</p>
           <div class="project-links">
-            <a href="#" class="project-link">Live Demo</a>
-            <a href="#" class="project-link">Source Code</a>
+            <a href="#" class="project-link">Live<i class="if-link is-ml-2"></i></a>
+            <a href="#" class="project-link">Code<i class="if-github is-ml-2"></i></a>
           </div>
         </div>
       </div>
 
       <!-- Project 2 -->
       <div class="project-card">
-        <img src="https://placehold.co/400x250" alt="Project 2" class="project-image">
+        <img src="../assets/ChiptunedScreenshot.webp" alt="Project 2" class="project-image">
         <div class="project-content">
-          <h3 class="project-title">Project Two</h3>
+          <h3 class="project-title">Chiptuned</h3>
           <p class="project-description">A brief description of the second project. Highlighting the technologies used and the problems solved.</p>
           <div class="project-links">
-            <a href="#" class="project-link">Live Demo</a>
-            <a href="#" class="project-link">Source Code</a>
+            <a href="#" class="project-link">Live<i class="if-link is-ml-2"></i></a>
+            <a href="#" class="project-link">Code<i class="if-github is-ml-2"></i></a>
           </div>
         </div>
       </div>
@@ -32,11 +32,11 @@
       <div class="project-card">
         <img src="https://placehold.co/400x250" alt="Project 3" class="project-image">
         <div class="project-content">
-          <h3 class="project-title">Project Three</h3>
+          <h3 class="project-title">Promptly</h3>
           <p class="project-description">A brief description of the third project. Highlighting the technologies used and the problems solved.</p>
           <div class="project-links">
-            <a href="#" class="project-link">Live Demo</a>
-            <a href="#" class="project-link">Source Code</a>
+            <a href="#" class="project-link">Live<i class="if-link is-ml-2"></i></a>
+            <a href="#" class="project-link">Code<i class="if-github is-ml-2"></i></a>
           </div>
         </div>
       </div>
@@ -66,14 +66,18 @@
 }
 
 .project-card {
-  background-color: #1a202c;
-  border-radius: 10px;
+  background-color: rgba(16, 18, 27, 0.7);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: box-shadow 0.3s ease;
+  text-align: left;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
 }
 
 .project-image {
@@ -94,16 +98,35 @@
 .project-description {
   font-size: 1rem;
   margin-bottom: 1.5rem;
+  font-weight: 200;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .project-links a {
-  margin-right: 1rem;
-  color: white;
+  display: inline-flex; /* Use inline-flex for better alignment */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: #e2e8f0;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 300; 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px; /* Pill-shaped links */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .project-links a:hover {
-  text-decoration: underline;
+  background-color: rgba(200, 200, 200, 0.1);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    justify-content: center;
+  }
 }
 </style>
