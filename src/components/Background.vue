@@ -110,7 +110,7 @@ onMounted(() => {
 
     if (isMobile) {
       ctx.font = 'bold 4rem sans-serif';
-      const lineHeight = 64; // Approx 4rem
+      const lineHeight = 64;
       ctx.fillText('Dan', canvas.value.width / 2, canvas.value.height / 2 - lineHeight / 2);
       ctx.fillText('Kaufman', canvas.value.width / 2, canvas.value.height / 2 + lineHeight / 2);
     } else {

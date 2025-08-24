@@ -3,10 +3,10 @@
     <div class="about-content">
       <div class="about-text">
         <h2 class="about-title">About Me</h2>
-        <p>I'm a passionate Full-Stack Developer with a keen eye for UI/UX, dedicated to crafting intuitive and engaging digital experiences. My journey in development is driven by a desire to build not just functional applications, but also beautiful and user-friendly interfaces. I thrive on bringing ideas to life, from concept to deployment, ensuring every detail contributes to a seamless user journey.</p>
+        <p>I'm a software developer who's passionate about building clean, responsive, and user-friendly apps. I work with technologies like HTML, CSS, JavaScript, Typescript, React, Vue, Tailwind, Python, Node.js. Blending strong UI/UX with scalable, maintainable backend. I care deeply about good design, clean code, and building meaningful experiences that perform well and feel great to use.</p>
       </div>
       <div class="about-image">
-        <img src="https://placehold.co/300" alt="Dan Kaufman">
+        <img src="https://avatars.githubusercontent.com/u/47069556?v=4" alt="Dan Kaufman">
       </div>
       <h2 class="skills-title">Skills</h2>
       <div class="language-icons">
@@ -37,7 +37,6 @@
   justify-items: center;
   max-width: 1280px;
   margin: 0 auto;
-  
   background-color: rgba(16, 18, 27, 0.25);
   backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -84,7 +83,7 @@
 
 .language-icons i {
   font-size: 2.5rem;
-  color: #e2e8f0; /* slate-200 */
+  color: #e2e8f0;
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -94,14 +93,11 @@
 }
 
 @keyframes pulse-glow {
-    0% {
+    0%,100% {
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
     50% {
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    }
-    100% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
 }
 

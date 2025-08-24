@@ -2,7 +2,7 @@
   <section class="hero-section">
     <div class="hero-content">
       <h1 class="hero-title is-pb-[6rem]"></h1>
-      <p class="hero-subtitle is-pt-[6rem]">Full-Stack Developer | Creative Technologist</p>
+      <p class="hero-subtitle is-pt-[6rem]">Software Developer | Creative Engineering</p>
       <a href="#projects" class="hero-cta">View My Work</a>
     </div>
   </section>
@@ -50,14 +50,11 @@
 }
 
 @keyframes pulse-glow {
-    0% {
+    0%,100% {
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
     50% {
         box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-    }
-    100% {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
 }
 </style>

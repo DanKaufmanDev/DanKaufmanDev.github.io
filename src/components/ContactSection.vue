@@ -3,8 +3,7 @@
     <h2 class="contact-title">Contact Me</h2>
     <form action="https://formsubmit.co/1ff2b9b962d5f50c526c27e4153b9fe0" method="POST" class="contact-form" :class="formClass">
       <input type="hidden" name="_captcha" value="false">
-      <input  type="hidden" name="_next" value="http://localhost:5173/?form_submission=success#contact">
-      <input type="hidden" name="_subject" value="New email from danielkaufman.dev!">
+      <input type="hidden" name="_next" value="http://localhost:5173/?form_submission=success#contact">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required v-model="name" @input="validateForm">
@@ -17,7 +16,7 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="8" required v-model="message" @input="validateForm"></textarea>
       </div>
-      <button type="submit" class="submit-button">Send Message</button>
+      <button :disabled="formClass !== 'is-valid'" type="submit" class="submit-button" :class="formClass">Send Message</button>
     </form>
   </section>
 </template>
@@ -38,7 +37,7 @@ const validateForm = () => {
     }
 
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
-    if (name.value !== '' && isEmailValid && message.value !== '') {
+    if (name.value.trim() !== '' && isEmailValid && message.value.trim() !== '') {
         validationState.value = 'valid';
     } else {
         validationState.value = 'invalid';
@@ -136,6 +135,7 @@ onMounted(() => {
   border-radius: 999px;
   background-color: transparent;
   cursor: pointer;
+  animation: 3s infinite ease-in-out;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -145,28 +145,25 @@ onMounted(() => {
 }
 
 @keyframes pulse-glow {
-    0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
+    0%,100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
     50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.2); }
-    100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
 }
 
 @keyframes pulse-glow-valid {
-    0% { box-shadow: 0 0 15px rgba(74, 222, 128, 0.2); }
-    50% { box-shadow: 0 0 25px rgba(74, 222, 128, 0.4); }
-    100% { box-shadow: 0 0 15px rgba(74, 222, 128, 0.2); }
+    0%,100% { box-shadow: 0 0 15px rgba(74, 222, 128, 0.1); }
+    50% { box-shadow: 0 0 25px rgba(74, 222, 128, 0.2); }
 }
 
 @keyframes pulse-glow-invalid {
-    0% { box-shadow: 0 0 15px rgba(248, 113, 113, 0.2); }
-    50% { box-shadow: 0 0 25px rgba(248, 113, 113, 0.4); }
-    100% { box-shadow: 0 0 15px rgba(248, 113, 113, 0.2); }
+    0%,100% { box-shadow: 0 0 15px rgba(248, 113, 113, 0.1); }
+    50% { box-shadow: 0 0 25px rgba(248, 113, 113, 0.2); }
 }
 
-.contact-form.is-valid {
+:is(.contact-form.is-valid, .submit-button.is-valid) {
     animation-name: pulse-glow-valid;
 }
 
-.contact-form.is-invalid {
+:is(.contact-form.is-invalid, .submit-button.is-invalid) {
     animation-name: pulse-glow-invalid;
 }
 

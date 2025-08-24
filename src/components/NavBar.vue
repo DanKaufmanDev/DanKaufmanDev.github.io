@@ -107,18 +107,14 @@ function toggleMenu() {
 }
 
 @keyframes pulse-glow {
-    0% {
+    0%,100% {
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
     50% {
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
     }
-    100% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    }
 }
 
-/* --- Mobile --- */
 @media (max-width: 768px) {
     .nav-links.desktop {
         display: none;

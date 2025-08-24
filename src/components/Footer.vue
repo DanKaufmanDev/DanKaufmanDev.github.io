@@ -14,7 +14,7 @@
 <style scoped>
 .footer {
   padding: 4rem 2rem;
-  color: #e2e8f0; /* slate-200 */
+  color: #e2e8f0;
   text-align: center;
 }
 
