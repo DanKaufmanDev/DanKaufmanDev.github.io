@@ -14,11 +14,11 @@
 .if-python:before { font-family: 'IconForge' !important; content: '\e98d'; }
 .if-nodejs:before { font-family: 'IconForge' !important; content: '\e985'; }
 .if-tailwindcss:before { font-family: 'IconForge' !important; content: '\ea99'; }
-.is-fixed-bg { position: fixed; top: 0; left: 0; width: 100dvw; height: 100dvh; z-index: -1; }
-.is-bg-coal-10 { background-color: #0a0e1a; }
 .if-github:before { font-family: 'IconForge' !important; content: '\e983'; }
 .if-linkedin:before { font-family: 'IconForge' !important; content: '\e95d'; }
 .if-mail:before { font-family: 'IconForge' !important; content: '\ea2b'; }
+.is-fixed-bg { position: fixed; top: 0; left: 0; width: 100dvw; height: 100dvh; z-index: -1; }
+.is-bg-coal-10 { background-color: #0a0e1a; }
 .is-pb-\[6rem\] { padding-bottom: 6rem; }
 .is-pt-\[6rem\] { padding-top: 6rem; }
 .if-link:before { font-family: 'IconForge' !important; content: '\e9b9'; }
