@@ -3,7 +3,7 @@
     <h2 class="contact-title">Contact Me</h2>
     <form action="https://formsubmit.co/1ff2b9b962d5f50c526c27e4153b9fe0" method="POST" class="contact-form" :class="formClass">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="http://localhost:5173/?form_submission=success#contact">
+      <input type="hidden" name="_next" value="https://danielkaufman.dev/?form_submission=success#contact">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required v-model="name" @input="validateForm">
